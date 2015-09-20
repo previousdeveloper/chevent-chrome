@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/popup.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+<body ng-app="chevent">
+	
+	<div id="wrapper">
+		
+		<div class="logo">
+			<img src="img/logo.png" alt="">
+		</div>
+
+
+		<div class="events" ng-controller="cheventctrl">
+
+
+			<div class="event {{event.event_class}}" ng-repeat="event in events">
+				<div class="event-image">
+					<img src="{{event.event_image}}" alt="">
+				</div>
+
+				<div class="event-content">
+					<div class="event-title">{{event.event_name}}</div>
+					<div class="event-info">
+						<ul>
+							<li ng-click="eventGo(event.event_url)" class="details">Detaylar</li>
+							<li><i class="fa fa-try"></i> {{event.event_cost}}</li>
+							<li><i class="fa fa-clock-o"></i> {{event.event_date}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/popup.min.js"></script>
+</body>
+</html>
