@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "chevent",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "description": "chevent - türkiyedeki web etkinlikleri!",
   "author": "Samet Aydemir",
   "browser_action": {
@@ -15,7 +15,10 @@
     "persistent": false
   },
   "permissions": [
-    "http://*/"
+    "http://*/",
+    "geolocation"
+
+
   ],
   "icons": {
     "16": "popup/icon/icon16.png",

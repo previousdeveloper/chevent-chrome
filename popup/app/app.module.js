@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('chevent', [
-    'countdownTimer'
+    'countdownTimer',
+    'cgBusy'
 ]);
 
