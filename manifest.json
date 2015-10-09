@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "chevent",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "chevent - türkiyedeki web etkinlikleri!",
   "author": "Samet Aydemir",
   "browser_action": {
