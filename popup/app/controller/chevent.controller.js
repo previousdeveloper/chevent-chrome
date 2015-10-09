@@ -12,7 +12,7 @@ function cheventCtrl($scope, cheventService, locationService) {
     var newDateFormat = [];
     vm.eventPromise = null;
     vm.search = '';
-
+    vm.finished =null;
 
     // pagination refactor here not do not use $scope binding directly.
     $scope.curPage = 0;
@@ -52,6 +52,7 @@ function cheventCtrl($scope, cheventService, locationService) {
             }
         )
 
+        vm.finished = true;
     });
 
     locationService.getLocation().then(function (res) {
