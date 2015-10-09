@@ -4,9 +4,9 @@
 angular.module('chevent')
     .service('cheventService', cheventService);
 
-cheventService.$inject = ['$http', '$q'];
+cheventService.$inject = ['$http', '$q', '$timeout'];
 
-function cheventService($http, $q) {
+function cheventService($http, $q, $timeout) {
 
     var cheventService = {
         getEvent: getEvent
@@ -23,7 +23,10 @@ function cheventService($http, $q) {
         $http.get(url)
             .success(function (response, status, headers, config) {
 
-                deferred.resolve(response);
+                //testing purpose
+                $timeout(function () {
+                    deferred.resolve(response);
+                }, 1300);
 
             }).error(function (err, status, headers, config) {
                 deferred.reject(err);

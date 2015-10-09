@@ -15,7 +15,10 @@
     "persistent": false
   },
   "permissions": [
-    "http://*/"
+    "http://*/",
+    "geolocation"
+
+
   ],
   "icons": {
     "16": "popup/icon/icon16.png",
