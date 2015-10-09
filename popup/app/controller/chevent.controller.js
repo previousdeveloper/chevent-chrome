@@ -36,7 +36,8 @@ function cheventCtrl($scope, cheventService) {
                         event_date_ddmmyyyy: eventDateDdmmyyyy,
                         event_image: result.event_image,
                         event_name: result.event_name,
-                        event_url: result.event_url
+                        event_url: result.event_url,
+                        event_date_dmy : result.event_date_ddmmyyyy
 
                     };
 

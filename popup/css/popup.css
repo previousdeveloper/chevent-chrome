@@ -28,11 +28,6 @@ body {
     background: #2a89bb;
     padding: 10px;
     margin-bottom: 10px;
-    border-left: 2px solid #50d3a3;
-}
-
-.event.disable {
-    border-left: 2px solid #c66376;
 }
 
 .event .event-image {
@@ -41,10 +36,10 @@ body {
 }
 
 .event .event-image img {
-    border-radius: 50%;
     width: 70px;
     height: 70px;
     border: 3px solid #eee;
+    margin-top: 12px;
 }
 
 .event-content {
@@ -77,11 +72,24 @@ body {
     color: #fff;
 }
 
+.event-info ul li.event-date-dmmy{
+    background: #0D6DA0;
+}
+
 .event-info ul li:first-child {
     padding: 4px 6px 4px 6px;
 }
 
 .details {
-    background: #145f87;
     cursor: pointer;
+}
+
+::-webkit-input-placeholder { color:#fff; }
+
+input.pure-input-1{
+    background: #2580AF;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    margin-bottom: 10px !important;
 }
