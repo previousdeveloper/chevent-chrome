@@ -12,10 +12,9 @@ function cheventCtrl($scope, cheventService, locationService) {
     var newDateFormat = [];
     vm.eventPromise = null;
     vm.search = '';
-    vm.finished =null;
+    vm.finished = false;
 
-    // pagination refactor here not do not use $scope binding directly.
-    $scope.curPage = 0;
+    vm.curPage = 0;
     $scope.pageSize = 5;
 
     vm.eventPromise = cheventService.getEvent();
@@ -36,6 +35,7 @@ function cheventCtrl($scope, cheventService, locationService) {
                 //Turkish Date Format
                 var eventDateDdmmyyyy = formatResult.toString().replace(new RegExp(",", "gm"), ".");
 
+
                 var eventDataModel = {
                     event_class: result.event_class,
                     event_cost: result.event_cost,
@@ -48,11 +48,14 @@ function cheventCtrl($scope, cheventService, locationService) {
 
                 };
 
+
                 vm.events.push(eventDataModel);
             }
-        )
+        );
 
         vm.finished = true;
+    }, function (err) {
+        alert(err);
     });
 
     locationService.getLocation().then(function (res) {

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="css/angular-busy.min.css">
 </head>
-<body ng-app="chevent">
+<body ng-app="chevent" ng-controller="cheventCtrl as vm">
 
 
 <div id="wrapper">
@@ -19,10 +19,8 @@
     </div>
 
 
-    <div class="events" ng-controller="cheventCtrl as vm">
+    <div class="events">
 
-        <div ng-if="vm.events.length===0" 
-             cg-busy="{promise:vm.eventPromise,message:'Loading events..', templateUrl:'tmpl\\loader.html'}"></div>
 
         <div ng-if="vm.finished" class="pure-form pure-form-stacked" role="search">
             <div class="row">
@@ -37,21 +35,25 @@
 
 
         <div ng-if="vm.finished" class="event {{event.event_class}}"
-             ng-repeat="event in vm.events | filter:vm.search | pagination: curPage * pageSize | limitTo: pageSize">
+             ng-repeat="event in vm.events | filter:vm.search | pagination: vm.curPage * pageSize | limitTo: pageSize">
             <div class="event-image">
                 <img src="{{event.event_image}}" alt="">
             </div>
 
             <div class="event-content">
                 <div class="event-title">{{event.event_name}}</div>
+
                 <div class="event-info">
                     <ul>
                         <li ng-click="vm.eventGo(event.event_url)" class="details">Detaylar</li>
                         <li><i class="fa fa-try"></i> {{event.event_cost}}</li>
-                        <li class="event-date-dmmy" countdown end-date="{{event.event_date_ddmmyyyy}}"
+                        <li ng-if="event.event_date_ddmmyyyy" class="event-date-dmmy" countdown
+                            end-date="{{event.event_date_ddmmyyyy}}"
                             lang="TR"
                             units="days|hours|minutes|seconds">kaldı
                         </li>
+
+
                     </ul>
                 </div>
             </div>
@@ -62,32 +64,33 @@
         </div>
 
 
+        <div class="pagination" ng-if="vm.finished">
 
-    <button type="button" class="pure-button pure-button-primary" ng-disabled="curPage == 0"
-                    ng-click="curPage=curPage-1"> &lt; GERİ
+            <button type="button" class="pure-button pure-button-primary" ng-disabled="vm.curPage == 0"
+                    ng-click="vm.curPage=vm.curPage-1"> &lt; GERİ
             </button>
 
-            <span>{{curPage + 1}} sayfada,  toplam {{ numberOfPages() }} sayfa var</span>
+            <span>{{vm.curPage + 1}} sayfada,  toplam {{ numberOfPages() }} sayfa var</span>
 
 
             <button type="button" class="pure-button pure-button-primary"
-                    ng-disabled="curPage >= vm.events.length/pageSize - 1"
-                    ng-click="curPage = curPage+1">İLERİ &gt;</button>
+                    ng-disabled="vm.curPage >= vm.events.length/pageSize - 1"
+                    ng-click="vm.curPage = vm.curPage+1">İLERİ &gt;</button>
+        </div>
 
 
-            
-
-        
     </div>
-
+    <div ng-if="vm.events.length===0"
+         cg-busy="{promise:vm.eventPromise,message:'Loading events..', templateUrl:'tmpl\\loader.html'}"></div>
 </div>
+
 
 <!--Library-->
 <script src="lib/angular.min.js"></script>
 <script src="lib/countdownTimer.min.js"></script>
 <script src="lib/angular-busy.min.js"></script>
 
-
+<script src="../background.js"></script>
 <!--Base Module-->
 <script src="app/app.module.js"></script>
 <script src="app/service/chevent.service.js"></script>
