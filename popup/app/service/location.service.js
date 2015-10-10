@@ -18,7 +18,7 @@ function locationService($http, $q, $timeout) {
 
         var deferred = $q.defer();
 
-        var url = "http://ipinfo.io";
+        var url = "http://ip-api.com/json";
 
         $http.get(url)
             .success(function (response, status, headers, config) {

@@ -59,7 +59,7 @@ function cheventCtrl($scope, cheventService, locationService) {
 
         if (res !== undefined && res !== null) {
 
-            vm.currentCity = res.city;
+            vm.currentCity = res.regionName;
             vm.search = vm.currentCity;
         }
 
